@@ -1,4 +1,8 @@
+using HotelListing.API.Configuations;
+using HotelListing.API.Contracts;
 using HotelListing.API.Data;
+using HotelListing.API.NET5.Repository;
+using HotelListing.API.Repository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -29,6 +33,11 @@ namespace HotelListing.API
             });
 
             builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
+
+            builder.Services.AddAutoMapper(typeof(MapperConfig));
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
+
 
             var app = builder.Build();
 
