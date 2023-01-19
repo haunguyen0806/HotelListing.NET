@@ -3,7 +3,7 @@ using HotelListing.API.Data;
 using HotelListing.API.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelListing.API.NET5.Repository
+namespace HotelListing.API.Repository
 {
     public class CountriesRepository : GenericRepository<Country>, ICountriesRepository
     {

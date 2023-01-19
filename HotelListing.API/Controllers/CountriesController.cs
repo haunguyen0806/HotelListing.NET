@@ -9,6 +9,7 @@ using HotelListing.API.Data;
 using HotelListing.API.Models.Country;
 using AutoMapper;
 using HotelListing.API.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelListing.API.Controllers
 {
@@ -26,6 +27,7 @@ namespace HotelListing.API.Controllers
 
         // GET: api/Countries
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<GetCountryDTO>>> GetCountries()
         {
             var contries = await _countriesRepository.GetAllAsync();
